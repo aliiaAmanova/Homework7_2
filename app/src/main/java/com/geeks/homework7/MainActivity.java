@@ -1,17 +1,10 @@
 package com.geeks.homework7;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,58 +15,65 @@ public class MainActivity extends AppCompatActivity {
     private boolean isOperationClick;
 
 
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.text_view);
     }
 
-    public void onNumberClick(View view){
-        View view1 = view;
-        String text = ((MaterialButton) view1).getText().toString();
+    public void onNumberClick(View view) {
+        String text = ((MaterialButton) view).getText().toString();
         if (text.equals("AC")) {
             textView.setText("0");
-            firstNum=0;
-            secondNum=0;
-        }else if (textView.getText().toString().equals("0") || isOperationClick){
+            firstNum = 0;
+        } else if (textView.getText().toString().equals("0") || isOperationClick) {
             textView.setText(text);
-        }else{
+        } else {
             textView.append(text);
-        }
-        isOperationClick=false;
-
-    }
-    public void onOperationClick(View view){
-        if (view.getId() == R.id.btn_plus|| view.getId() == R.id.btn_minus ||
-                view.getId() == R.id.btn_multiplication || view.getId() == R.id.btn_division){
-firstNum= Integer.valueOf(textView.getText().toString());
-        }if(view.getId() == R.id.btn_equal) {
-secondNum = Integer.valueOf(textView.getText().toString());
-result= firstNum+secondNum;
-textView.setText(result.toString());
         }
         isOperationClick = true;
     }
 
-    public void calculateResult(){
-        switch(operation){
-            case "+":
+    public void onOperationClick(View view) {
+        if (view.getId() == R.id.btn_plus) {
+            firstNum = Integer.valueOf(textView.getText().toString());
+            operation = "+";
+        } else if (view.getId() == R.id.btn_minus) {
+            firstNum = Integer.valueOf(textView.getText().toString());
+            operation = "-";
+        } else if (view.getId() == R.id.btn_multiplication) {
+            firstNum = Integer.valueOf(textView.getText().toString());
+            operation = "x";
+        } else if (view.getId() == R.id.btn_division) {
+            firstNum = Integer.valueOf(textView.getText().toString());
+            operation = "/";
+        } else if (view.getId() == R.id.btn_equal) {
+            secondNum = Integer.valueOf(textView.getText().toString());
+            if (operation.equals("+")) {
                 result = firstNum + secondNum;
-                break;
-            case "-":
+                textView.setText(result.toString());
+            } else if (operation.equals("-")) {
                 result = firstNum - secondNum;
-                break;
-            case "*":
+                textView.setText(result.toString());
+            } else if (operation.equals("x")) {
                 result = firstNum * secondNum;
-                break;
-            case "/":
-                if (secondNum == 0 ) Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-                else result = firstNum / secondNum;
-                break;
+                textView.setText(result.toString());
+            } else if (operation.equals("/")) {
+                if (secondNum == 0) {
+                    textView.setText("Error");
+                } else {
+                    result = firstNum / secondNum;
 
+                }
+            }
+            textView.setText(result.toString());
+            isOperationClick = true;
         }
-        textView.setText(result.toString());
+
     }
-
-
 }
+
+
+
+
+
