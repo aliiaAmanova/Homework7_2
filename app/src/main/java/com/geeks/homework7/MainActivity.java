@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         }
         isOperationClick = true;
     }
-
+//changed
     public void onOperationClick(View view) {
         if (view.getId() == R.id.btn_plus) {
             firstNum = Integer.valueOf(textView.getText().toString());
