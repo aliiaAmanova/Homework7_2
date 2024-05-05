@@ -34,43 +34,43 @@ public class MainActivity extends AppCompatActivity {
         isOperationClick = true;
     }
 //changed
-    public void onOperationClick(View view) {
-        if (view.getId() == R.id.btn_plus) {
-            firstNum = Integer.valueOf(textView.getText().toString());
-            operation = "+";
-        } else if (view.getId() == R.id.btn_minus) {
-            firstNum = Integer.valueOf(textView.getText().toString());
-            operation = "-";
-        } else if (view.getId() == R.id.btn_multiplication) {
-            firstNum = Integer.valueOf(textView.getText().toString());
-            operation = "x";
-        } else if (view.getId() == R.id.btn_division) {
-            firstNum = Integer.valueOf(textView.getText().toString());
-            operation = "/";
-        } else if (view.getId() == R.id.btn_equal) {
-            secondNum = Integer.valueOf(textView.getText().toString());
-            if (operation.equals("+")) {
-                result = firstNum + secondNum;
-                textView.setText(result.toString());
-            } else if (operation.equals("-")) {
-                result = firstNum - secondNum;
-                textView.setText(result.toString());
-            } else if (operation.equals("x")) {
-                result = firstNum * secondNum;
-                textView.setText(result.toString());
-            } else if (operation.equals("/")) {
-                if (secondNum == 0) {
-                    textView.setText("Error");
-                } else {
-                    result = firstNum / secondNum;
-
-                }
-            }
+public void onOperationClick(View view) {
+    if (view.getId() == R.id.btn_plus) {
+        firstNum = Integer.valueOf(textView.getText().toString());
+        operation = "+";
+    } else if (view.getId() == R.id.btn_minus) {
+        firstNum = Integer.valueOf(textView.getText().toString());
+        operation = "-";
+    } else if (view.getId() == R.id.btn_multiplication) {
+        firstNum = Integer.valueOf(textView.getText().toString());
+        operation = "x";
+    } else if (view.getId() == R.id.btn_division) {
+        firstNum = Integer.valueOf(textView.getText().toString());
+        operation = "/";
+    } else if (view.getId() == R.id.btn_equal) {
+        secondNum = Integer.valueOf(textView.getText().toString());
+        if (operation.equals("+")) {
+            result = firstNum + secondNum;
             textView.setText(result.toString());
-            isOperationClick = true;
-        }
+        } else if (operation.equals("-")) {
+            result = firstNum - secondNum;
+            textView.setText(result.toString());
+        } else if (operation.equals("x")) {
+            result = firstNum * secondNum;
+            textView.setText(result.toString());
+        } else if (operation.equals("/")) {
+            if (secondNum == 0) {
+                textView.setText("Error");
+            } else {
+                result = firstNum / secondNum;
 
+            }
+        }
+        textView.setText(result.toString());
+        isOperationClick = true;
     }
+
+}
 }
 
 
