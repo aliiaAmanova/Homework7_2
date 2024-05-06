@@ -201,7 +201,6 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/DarkGray.Button"
                 android:layout_marginHorizontal="18dp"
-                android:onClick="onOperationClick"
                 android:text="." />
 
             <com.google.android.material.button.MaterialButton
